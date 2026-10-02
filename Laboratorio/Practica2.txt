@@ -1,0 +1,145 @@
+#include <iostream>
+
+
+using namespace std;
+
+// Para el case 3 
+int largo(const char* cadena) {
+    int longitud = 0;
+    while (cadena[longitud] != '\0') {
+        longitud++;
+    }
+    return longitud;
+}
+
+bool igualdad(const char* cad1, const char* cad2) {
+    int len1 = largo(cad1);
+    int len2 = largo(cad2);
+
+    if (len1 != len2) {
+        return false;
+    }
+
+    for (int i = 0; i < len1; i++) {
+        if (cad1[i] != cad2[i]) {
+            return false;
+        }
+    }
+
+    return true; 
+}
+
+//case 5
+
+void convertir(int numero, char* cadena) {
+    int i = 0;
+
+    // Caso especial para el cero
+    if (numero == 0) {
+        cadena[0] = '0';  
+        cadena[1] = '\0'; 
+        return;
+    }
+
+    bool negativo = false;
+    
+    if (numero < 0) {
+        negativo = true;
+        numero = -numero;
+    }
+
+   
+    while (numero > 0) {
+        cadena[i++] = (numero % 10) + '0'; // Conversion a codigo ASCII
+        numero /= 10;
+    }
+
+    if (negativo) {
+        cadena[i++] = '-';
+    }
+
+    cadena[i] = '\0'; 
+
+    // Invierte el arreglo sobre su propio espacio de memoria
+    int inicio = 0;
+    int fin = i - 1;
+    while (inicio < fin) {
+        char temp = cadena[inicio];
+        cadena[inicio] = cadena[fin];
+        cadena[fin] = temp;
+        inicio++;
+        fin--;
+    }
+}
+
+
+
+int main() {
+    int num;
+    
+    cout << "Ingrese un numero impar entre 1-17: ";
+    cin >> num;
+    
+    switch(num){
+    
+    case 1:{
+        int valores[] = {50000, 20000, 10000, 5000, 2000, 1000, 500, 200, 100, 50};
+        int tam = sizeof(valores) / sizeof(valores[0]);
+
+        long dinero;
+        cout << "Ingrese la cantidad de dinero: ";
+        cin >> dinero;
+
+        long restante = dinero;
+
+        cout << endl;
+
+        for (int i = 0; i < tam; i++) {
+            int cantidadBilletes = restante / valores[i];
+            restante %= valores[i]; 
+        
+            cout << valores[i] << ": " << cantidadBilletes << endl;
+        }
+
+        cout << "\nFaltante: " << restante << endl;
+        
+        break;
+    }
+    
+    case 3:{
+        
+        const char* texto1 = "hola";
+        const char* texto2 = "Hola";
+    
+        // std::boolalpha imprime 'true' o 'false' en lugar de 1 o 0
+        cout << boolalpha;
+    
+        cout << "Prueba 1 (\"" << texto1 << "\" vs \"" << texto2 << "\"): " << igualdad(texto1, texto2) << std::endl;
+
+        break;            
+    }
+    
+    case 5:{
+        char resultado[20]; 
+
+      
+        int num1 = 123;
+        convertir(num1, resultado);
+        cout << "Entero: " << num1 << " -> Cadena: \"" << resultado << "\"" << endl;
+    
+        break;
+        
+    }
+    
+    case 7:{
+        
+        
+    }
+    
+    
+    
+    
+    }
+    
+    return 0;
+}

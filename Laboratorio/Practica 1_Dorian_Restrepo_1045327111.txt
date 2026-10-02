@@ -1,0 +1,317 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int num;
+
+    cout << "Ingrese un numero impar entre 3 y 17: ";
+    cin >> num;
+
+    switch(num) {
+
+    case 3: {
+
+        unsigned int dia, mes;
+        cout<< "Ingresa un mes: ";
+        cin >> mes;
+
+        if (cin.fail() || (mes <= 0 || mes > 12)){
+            cout << "Entrada no valida, Los meses deben ser numeros positivos entre 1 y 12, intenta de nuevo" << endl;
+            break;
+        }
+        
+        cout<< "Ingresa un dia: ";
+        cin >> dia;
+        
+        if (cin.fail()) {
+            cout << "Los dias deben ser numeros positivos, intenta de nuevo" << endl;
+            break;
+        }
+
+            //febrero
+        if (mes == 2) {
+            if (dia == 29) {
+                cout << "29/2 es valida en bisiesto." << endl;
+            }
+            else if (dia >= 1 && dia <= 28) {
+                cout << dia << "/" << mes << " es una fecha valida." << endl;
+            }
+            else {
+                cout << dia << "/" << mes << " es una fecha invalida." << endl;
+            }
+        }
+
+        //meses de 30 dias
+        else if (mes == 4 || mes == 6 || mes == 9 || mes == 11) {
+            if (dia >= 1 && dia <= 30)
+                cout << dia << "/" << mes << " es una fecha valida." << endl;
+            else
+                cout << dia << "/" << mes << " es una fecha invalida." << endl;
+        }
+        //Meses de 31 dias
+        else {
+            if (dia >= 1 && dia <= 31)
+                cout << dia << "/" << mes << " es una fecha valida." << endl;
+            else
+                    cout << dia << "/" << mes << " es una fecha invalida." << endl;
+        }
+
+    }
+
+
+
+        break;
+    
+
+    case 5:{
+
+        unsigned int figura;
+        cout<<"Ingresa un numero impar para crear la figura:";
+        cin >> figura;
+
+        if (cin.fail() || figura % 2 == 0 || figura <= 0) {
+            cout << "Entrada no valida, el numero debe ser impar y positivo, intente de nuevo." << endl;
+            break;
+        }
+
+        for (int i = 0; i <= figura/2 ; i ++ ){
+            
+            for (int j = 0; j <= (figura / 2) - i; j ++){
+                cout<<" ";
+            }
+
+            for (int k = 0; k < 2*i + 1; k++) {
+                cout << "*";
+
+            }
+            
+            cout<<endl;
+            
+            }
+            for (int i = (figura / 2) - 1; i >= 0; i--) {
+
+                for (int j = 0 ; j < (figura / 2) - i; j++) {
+                    cout << " ";
+                }
+                cout << " ";
+
+                for (int k = 0; k < 2*i + 1; k++) {
+                    cout << "*";
+                }
+                cout << endl;
+            }
+
+
+        
+    }
+    break;
+    case 7:{
+        unsigned int n, sig, sum = 0;
+        cout<<"Ingrese un numero para la serie de fibonacci: ";
+        cin>>n;
+
+        if (cin.fail() || n <= 0) {
+            cout << "Entrada no valida, debe ingresar un numero entero positivo, intente de nuevo." << endl;
+            break;
+        }
+
+        int prim = 1;
+        int seg = 1;
+
+        while( true ){
+            sig = prim + seg;
+            if (sig > n){
+                break;
+            }
+            else if(sig % 2 == 0){
+
+                sum = sum + sig;
+            }
+            prim = seg;
+            seg = sig;
+        }
+        cout<<"La suma de los terminos pares menores a n es: " << sum << endl;
+    }
+    break;
+
+
+    case 9:{
+
+        unsigned int num, sum = 0;
+        cout <<"Ingrese un numero: ";
+        cin >> num;
+
+        if (cin.fail() || num <= 0) {
+            cout << "Entrada no valida, intente de nuevo con un numero positivo mayor a cero." << endl;
+            break;
+        }
+
+
+        while (num > 0){
+
+            int digito = num % 10;
+
+            int resultado = 1;
+
+            for(int l = 0; l < digito; l++){
+                resultado *= digito;
+            }
+
+            sum += resultado;
+
+            num = num / 10;
+
+        }
+
+        cout<<sum;
+
+
+
+
+    }
+    break;
+
+
+    case 11:{
+
+        long int mcm = 1, mcd;
+
+        int n;
+
+        cout<<"Ingrese un numero:";
+
+        cin>>n;
+
+        if (cin.fail() || num <= 0) {
+            cout << "Entrada no valida, intente de nuevo con un numero positivo mayor a cero." << endl;
+            break;
+        }
+
+        for(int i = 1; i <=  n; i++){
+            long int a = mcm;
+            long int b = i;
+
+            while(b != 0){
+                long int residuo = a % b;
+                a = b;
+                b = residuo;
+            }
+
+            mcd = a;
+
+            mcm = (mcm*i)/mcd;
+        }
+
+        cout<<"El mcm hasta "<<n<<" es:"<<mcm;
+    }
+
+    break;
+
+    case 13:{
+
+        int n;
+        cout << "Ingrese un numero: ";
+        cin >> n;
+
+        if (cin.fail() || num <= 0) {
+            cout << "Entrada no valida, intente de nuevo con un numero positivo mayor a cero." << endl;
+            break;
+        }
+
+        int suma = 0;
+
+        for(int i = 2; i < n; i++) {
+
+            int divisores = 0;
+
+            for(int j = 1; j <= i; j++) {
+                if(i % j == 0) {
+                    divisores++;
+                }
+            }
+
+            if(divisores == 2) {
+                suma += i;
+            }
+        }
+
+        cout << "El resultado de la suma es: " << suma;
+
+
+
+
+    }
+    break;
+
+    case 15:{
+
+        int n;
+        cout << "Ingrese un numero impar: ";
+        cin >> n;
+
+        if (cin.fail() || num <= 0 || n % 2 == 0) {
+            cout << "Entrada no valida, intente de nuevo con un numero impar positivo ." << endl;
+            break;
+        }
+
+
+        int suma = 1;
+        int K = (n - 1) / 2;
+
+        for (int k = 1; k <= K; k++) {
+            suma += 16*k*k + 4*k + 4;
+        }
+
+        cout << "En una espiral de " << n << "x" << n << ", la suma es: " << suma << endl;
+
+
+
+
+    }
+    break;
+
+
+    case 17:{
+
+        int k;
+        cout << "Ingrese k: ";
+        cin >> k;
+        if (cin.fail() || num <= 0) {
+            cout << "Entrada no valida, intente de nuevo con un numero positivo mayor a cero." << endl;
+            break;
+        }
+
+        int n = 1;
+        int triangular = 0;
+        int divisores = 0;
+
+        while(true) {
+
+            triangular = n * (n + 1) / 2;
+
+            divisores = 0;
+            for(int i = 1; i <= triangular; i++) {
+                if(triangular % i == 0) {
+                    divisores++;
+                }
+            }
+
+            if(divisores > k) {
+                cout << "El numero es: " << triangular << " que tiene " << divisores << " divisores.";
+                break;
+            }
+
+            n++;
+        }
+
+
+
+    }
+        break;
+
+    default:
+        cout << "Numero no valido." << endl;
+    }
+
+    return 0;
+}
