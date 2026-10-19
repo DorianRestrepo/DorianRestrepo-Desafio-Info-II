@@ -11,9 +11,12 @@ SOURCES += \
         Consola.cpp \
         Fecha.cpp \
         Foto.cpp \
+        Mensaje.cpp \
         Recursos.cpp \
+        UdeABookGestor.cpp \
         Usuario.cpp \
-        main.cpp
+        main.cpp \
+        menuFun.cpp
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -27,5 +30,8 @@ HEADERS += \
     Fecha.h \
     Foto.h \
     ListaDinamica.h \
+    Mensaje.h \
     Recursos.h \
-    Usuario.h
+    UdeABookGestor.h \
+    Usuario.h \
+    menuFun.h

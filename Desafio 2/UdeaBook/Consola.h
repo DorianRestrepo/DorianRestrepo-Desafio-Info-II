@@ -1,42 +1,41 @@
 #ifndef CONSOLA_H
 #define CONSOLA_H
 
-// Librerias Necesarias
-#include <string>     // Libreria para el Manejo de Cadenas de Texto
-#include <iostream>   // Libreria de Entrada y Salida por Consola
+
+#include <string>
+#include <iostream>
 
 using namespace std;
 
-// Clase Estatica que Centraliza la Interaccion con la Consola
 class Consola {
 
 private:
 
-    static bool Entrada_Cerrada;   // Indica si la Entrada Estandar se Cerro (Fin de Archivo)
+    static bool Entrada_Cerrada;
 
 public:
 
-    static const int ANCHO = 64;   // Ancho de los Marcos Dibujados en Pantalla
+    static const int ANCHO = 64;
 
-    // Funciones de Dibujo
-    static void mostrarPortada();                     // Muestra el Titulo de Bienvenida del Programa
-    static void linea(char Caracter);                 // Dibuja una Linea Horizontal
-    static void titulo(const string& Texto);          // Dibuja un Titulo Enmarcado
-    static void centrado(const string& Texto);        // Escribe un Texto Centrado
-    static void exito(const string& Texto);           // Mensaje de Operacion Exitosa
-    static void error(const string& Texto);           // Mensaje de Error
-    static void aviso(const string& Texto);           // Mensaje Informativo
+
+    static void mostrarPortada();
+    static void linea(char Caracter);
+    static void titulo(const string& Texto);
+    static void centrado(const string& Texto);
+    static void exito(const string& Texto);
+    static void error(const string& Texto);
+    static void aviso(const string& Texto);
 
     // Funciones de Texto
-    static string ajustar(const string& Texto, int Ancho);   // Rellena o Recorta un Texto a un Ancho Fijo
-    static string recortar(const string& Texto);             // Quita Espacios al Inicio y al Final
+    static string ajustar(const string& Texto, int Ancho);
+    static string recortar(const string& Texto);
 
-    // Funciones de Lectura Segura
-    static string leerLinea(const string& Mensaje);                       // Lee una Linea Completa
-    static int    leerEntero(const string& Mensaje, int Minimo, int Maximo);   // Lee un Entero en un Rango
-    static char   leerOpcion(const string& Mensaje);                      // Lee una Opcion de una Letra
-    static void   pausar();                                               // Espera a que se Presione ENTER
-    static bool   entradaCerrada();                                       // Indica si ya no Hay Entrada
+    // Funciones de Lectura S
+    static string leerLinea(const string& Mensaje);
+    static int    leerEntero(const string& Mensaje, int Minimo, int Maximo);
+    static char   leerOpcion(const string& Mensaje);
+    static void   pausar();
+    static bool   entradaCerrada();
 };
 
 #endif // CONSOLA_H
